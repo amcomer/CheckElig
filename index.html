@@ -21,7 +21,7 @@
         
         function search() {
              // Fetch the CSV file
-            fetch(filename)
+            fetch(fileName)
                 .then(response => response.text())
                 .then(data => {
                     const lines = data.split('\n');
