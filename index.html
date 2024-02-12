@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel File Search</title>
+    <title>Eligibility Data Search</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Add your CSS styles here */
-    </style>
 </head>
 
 <body>
@@ -57,11 +54,11 @@
 
         const value = currentLine[0]; // Assuming the string value is the first column
 
-        if (value === searchValue) {
+        if (value.toLowerCase() === searchValue) {
             found = true;
             callback(null, currentLine);
             break;
-        } else if (value < searchValue) {
+        } else if (value.toLowerCase() < searchValue) {
             left = mid + 1;
         } else {
             right = mid - 1;
