@@ -14,7 +14,7 @@
 <body>
     <h1>Search Eligibility Data</h1>
     <input type="text" id="searchInput" placeholder="Enter ProviderOne ID">
-    <button type="button" id="searchButton" onclick="search();">Search</button>
+    <button type="button" id="searchButton" onclick="search()">Search</button>
     <div id="searchResults"></div>
 
     <script>
@@ -28,7 +28,7 @@
                 }
 
                 if (result) {
-                    document.getElementById('searchResults').innerHTML = '<p style="color:red">Value found: ' + result + '</p>';
+                    document.getElementById('searchResults').innerHTML = '<p style="color:green">Value found: ' + result + '</p>';
                 } else {
                     document.getElementById('searchResults').innerHTML = '<p style="color:red">Value not found</p>';
                 }
