@@ -62,7 +62,7 @@
 
                     const value = currentLine[0]; // Assuming the string value is the first column
 
-                    if (value === searchValue) {
+                    if (value.toLowerCase() === searchValue) {
                         found = true;
                         callback(null, value);
                         break;
