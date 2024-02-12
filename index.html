@@ -59,13 +59,13 @@
                     const mid = Math.floor((left + right) / 2);
                     const currentLine = lines[mid].split(',');
 
-                    const id = parseInt(currentLine[0]); // Assuming the id is the first column
+                    const value = currentLine[0]; // Assuming the string value is the first column
 
-                    if (id === searchValue) {
+                    if (value === searchValue) {
                         found = true;
                         callback(null, currentLine);
                         break;
-                    } else if (id < searchValue) {
+                    } else if (value < searchValue) {
                         left = mid + 1;
                     } else {
                         right = mid - 1;
