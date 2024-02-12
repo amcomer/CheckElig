@@ -14,12 +14,12 @@
 <body>
     <h1>Search Excel Files</h1>
     <input type="text" id="searchInput" placeholder="Enter search query">
-    <button onclick="search();">Search</button>
+    <button id="searchButton" onclick="search();">Search</button>
     <div id="searchResults"></div>
 
     <script>
         function search() {
-            binarySearchCSV('bin/data.csv', document.getElementById('searchInput').value.toLowerCase(), (err, result) => {
+            binarySearchCSV('data.csv', document.getElementById('searchInput').value.toLowerCase(), (err, result) => {
                 if (err) {
                     document.getElementById('searchResults').innerHTML = 'Error reading CSV file: ' + err;
                     return;
