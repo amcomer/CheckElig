@@ -19,7 +19,8 @@
 
     <script>
         function search() {
-            binarySearchCSV('data.csv', document.getElementById('searchInput').value.toLowerCase(), (err, result) => {
+            var searchValue = document.getElementById('searchInput').value.toLowerCase();
+            binarySearchCSV('data.csv', searchValue, (err, result) => {
                 if (err) {
                     document.getElementById('searchResults').innerHTML = 'Error reading CSV file: ' + err;
                     return;
