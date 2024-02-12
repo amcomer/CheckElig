@@ -64,7 +64,7 @@
 
                     if (value === searchValue) {
                         found = true;
-                        callback(null, currentLine);
+                        callback(null, value);
                         break;
                     } else if (value < searchValue) {
                         left = mid + 1;
