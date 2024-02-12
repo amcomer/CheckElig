@@ -30,18 +30,16 @@
                     // Call the binarySearchCSV function with the lines array, search value, and callback
                     binarySearchCSV(lines, searchValue, (err, result) => {
                         if (err) {
-                            console.error('Error:', err);
+                            document.getElementById('searchResults').innerHTML = 'Error reading CSV file: ' + err;
                         } else if (result) {
-                            console.log('Found:', result);
-                            // Display or handle the result as needed
+                            document.getElementById('searchResults').innerHTML = '<p style="color:green">Value found: ' + result + '</p>';
                         } else {
-                            console.log('Value not found.');
-                            // Handle the case where the value is not found
+                            document.getElementById('searchResults').innerHTML = '<p style="color:red">Value not found</p>';
                         }
                     });
                 })
                 .catch(error => {
-                    console.error('Fetch error:', error);
+                    document.getElementById('searchResults').innerHTML = 'Fetch error: ' + error;
                 });
         }
 
