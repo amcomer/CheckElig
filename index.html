@@ -18,14 +18,14 @@
         var myInput = document.getElementById('searchInput');
         var myResults = document.getElementById('searchResults');
         const fileName = 'data.csv'; // Corrected variable name
-        
-    function search() {
+
+        function search() {
             var searchValue = myInput.value.trim().toUpperCase();
 
             if (searchValue != '') {
                 // Fetch the CSV file using the correct variable name
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', fileName, true);
+                xhr.open('GET', fileName);
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
@@ -41,12 +41,17 @@
                                     myResults.innerHTML = '<p style="color:red">Value not found</p>';
                                 }
                             });
+                        } else {
+                            myResults.innerHTML = 'Error fetching CSV file: ' + xhr.statusText;
                         }
+                    } else {
+                        myResults.innerHTML = 'Error fetching CSV file: ' + xhr.statusText;
                     }
-                }
+                };
+                xhr.send();
             } else {
                 myResults.innerHTML = '';
-            }
+            };
         }
 
         // Function to perform binary search in a sorted CSV file
