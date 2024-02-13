@@ -25,7 +25,7 @@
                 .then(response => response.text())
                 .then(data => {
                     const lines = data.split('\n');
-                    var searchValue = myInput.value.toLowerCase();
+                    var searchValue = myInput.value.trim().toUpperCase();
 
                     // Call the binarySearchCSV function with the lines array, search value, and callback
                     binarySearchCSV(lines, searchValue, (err, result) => {
@@ -54,13 +54,13 @@
                 const mid = Math.floor((left + right) / 2);
                 const currentLine = lines[mid].split(',');
 
-                const value = currentLine[0]; // Assuming the string value is the first column
+                const value = currentLine[0].trim().toUpperCase(); // Assuming the string value is the first column
 
-                if (value.toLowerCase() === searchValue) {
+                if (value === searchValue) {
                     found = true;
                     callback(null, currentLine);
                     break;
-                } else if (value.toLowerCase() < searchValue) {
+                } else if (value < searchValue) {
                     left = mid + 1;
                 } else {
                     right = mid - 1;
