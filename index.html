@@ -19,34 +19,34 @@
         var myResults = document.getElementById('searchResults');
         const fileName = 'data.csv'; // Corrected variable name
         
-        function search() {
+    function search() {
             var searchValue = myInput.value.trim().toUpperCase();
 
-            if(searchValue != '') {
+            if (searchValue != '') {
                 // Fetch the CSV file using the correct variable name
-            fetch(fileName) // Corrected variable name
-                .then(response => response.text())
-                .then(data => {
-                    const lines = data.split('\n');
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', fileName, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            const lines = xhr.responseText.split('\n');
 
-                    // Call the binarySearchCSV function with the lines array, search value, and callback
-                    binarySearchCSV(lines, searchValue, (err, result) => {
-                        if (err) {
-                            myResults.innerHTML = 'Error reading CSV file: ' + err;
-                        } else if (result) {
-                            myResults.innerHTML = '<p style="color:green">Value found: ' + result + '</p>';
-                        } else {
-                            myResults.innerHTML = '<p style="color:red">Value not found</p>';
+                            // Call the binarySearchCSV function with the lines array, search value, and callback
+                            binarySearchCSV(lines, searchValue, (err, result) => {
+                                if (err) {
+                                    myResults.innerHTML = 'Error reading CSV file: ' + err;
+                                } else if (result) {
+                                    myResults.innerHTML = '<p style="color:green">Value found: ' + result + '</p>';
+                                } else {
+                                    myResults.innerHTML = '<p style="color:red">Value not found</p>';
+                                }
+                            });
                         }
-                    });
-                })
-                .catch(error => {
-                    myResults.innerHTML = 'Fetch error: ' + error;
-                });
-            }else{
+                    }
+                }
+            } else {
                 myResults.innerHTML = '';
             }
-            
         }
 
         // Function to perform binary search in a sorted CSV file
