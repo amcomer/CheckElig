@@ -20,12 +20,14 @@
         const fileName = 'data.csv'; // Corrected variable name
         
         function search() {
-            // Fetch the CSV file using the correct variable name
+            var searchValue = myInput.value.trim().toUpperCase();
+
+            if(searchValue != '') {
+                // Fetch the CSV file using the correct variable name
             fetch(fileName) // Corrected variable name
                 .then(response => response.text())
                 .then(data => {
                     const lines = data.split('\n');
-                    var searchValue = myInput.value.trim().toUpperCase();
 
                     // Call the binarySearchCSV function with the lines array, search value, and callback
                     binarySearchCSV(lines, searchValue, (err, result) => {
@@ -41,6 +43,10 @@
                 .catch(error => {
                     myResults.innerHTML = 'Fetch error: ' + error;
                 });
+            }else{
+                myResults.innerHTML = '';
+            }
+            
         }
 
         // Function to perform binary search in a sorted CSV file
